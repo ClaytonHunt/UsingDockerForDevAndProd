@@ -1,3 +1,7 @@
-docker build -f ./src/Dockerfile --tag interactive-docker .
+cd ./src
 
-docker run --rm --name interactive-docker -it -v %CD%\src:/app -t interactive-docker
+docker build --tag dotnet-development .
+
+docker run --rm --name dotnet-development -it -p 3000:80 -t dotnet-development
+
+cd ..
