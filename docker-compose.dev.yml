@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+    using-docker-web:
+        image: dotnet-development
+        environment: 
+            - ASPNETCORE_ENVIRONMENT=Development
+            - DOTNET_USE_POLLING_FILE_WATCHER=1
+        volumes:
+            - ./src:/app
+            - /app/using-docker.web/wwwroot/lib
+            - /app/using-docker.web/bin
+            - /app/using-docker.web/obj
+        tty: true
+        ports:
+            - "3000:80"
+        working_dir: /app/using-docker.web
+        entrypoint:
+            - /bin/sh
+            - -c
+        command:
+            - dotnet restore && bower install --allow-root && dotnet watch run
