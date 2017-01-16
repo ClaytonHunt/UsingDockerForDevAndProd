@@ -1,3 +1,9 @@
 FROM microsoft/aspnetcore-build:1.1-projectjson
 
-ENTRYPOINT ["/bin/sh"]
+COPY . /app
+
+WORKDIR app
+
+RUN dotnet restore
+
+ENTRYPOINT ["dotnet", "run"]
