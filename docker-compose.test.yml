@@ -1,5 +1,6 @@
-version: '2'
-
+version: '3'
+volumes: 
+    data-volume:
 services:
     using-docker-test:
         image: dotnet-development
@@ -9,6 +10,7 @@ services:
         volumes:
             - ./:/app
             - /app/src/using-docker.web/wwwroot/lib
+            - /app/src/using-docker.web/node_modules
             - /app/src/using-docker.web/bin            
             - /app/src/using-docker.web/obj
             - /app/test/using-docker.tests/bin

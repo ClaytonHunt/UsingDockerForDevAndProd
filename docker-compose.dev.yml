@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
     using-docker-web:
@@ -9,6 +9,7 @@ services:
         volumes:
             - ./src:/app
             - /app/using-docker.web/wwwroot/lib
+            - /app/using-docker.web/node_modules
             - /app/using-docker.web/bin
             - /app/using-docker.web/obj
         tty: true
