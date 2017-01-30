@@ -9,6 +9,7 @@ services:
         volumes:
             - ./src:/app
             - /app/using-docker.web/wwwroot/lib
+            - /app/using-docker.web/node_modules
             - /app/using-docker.web/bin
             - /app/using-docker.web/obj
         tty: true

@@ -1,7 +1,7 @@
-version: '2'
+version: '3'
 
 services:
-    using-docker-test:
+    using-docker-build:
         image: dotnet-development
         environment: 
             - ASPNETCORE_ENVIRONMENT=Development
@@ -20,4 +20,4 @@ services:
             - /bin/sh
             - -c
         command:
-            - dotnet restore && cd test/using-docker.tests && dotnet watch test
+            - dotnet restore && cd src/using-docker.web && dotnet publish --configuration release --output /app/published
