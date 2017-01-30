@@ -1,13 +1,23 @@
 ﻿using System;
+using WebApplication.Controllers;
 using Xunit;
 
 namespace Tests
 {
-    public class Tests
+    public class HomeControllerTests
     {
         [Fact]
-        public void Test1() 
+        public void ItExists() 
         {
+            // act
+            var instance = new HomeController();
+
+            // assert
+            Assert.IsType<HomeController>(instance);
+        }
+
+        [Fact]
+        public void ItCanTest() {
             Assert.True(true);
         }
     }

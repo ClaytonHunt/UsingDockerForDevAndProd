@@ -7,17 +7,16 @@ services:
             - ASPNETCORE_ENVIRONMENT=Development
             - DOTNET_USE_POLLING_FILE_WATCHER=1
         volumes:
-            - ./src:/app
-            - ./test:/test
-            - /app/using-docker.web/wwwroot/lib
-            - /app/using-docker.web/bin            
-            - /app/using-docker.web/obj
-            - /test/using-docker.tests/bin
-            - /test/using-docker.tests/obj
+            - ./:/app
+            - /app/src/using-docker.web/wwwroot/lib
+            - /app/src/using-docker.web/bin            
+            - /app/src/using-docker.web/obj
+            - /app/test/using-docker.tests/bin
+            - /app/test/using-docker.tests/obj
         tty: true
-        working_dir: /test/using-docker.tests
+        working_dir: /app        
         entrypoint:
             - /bin/sh
             - -c
         command:
-            - dotnet restore && dotnet watch test
+            - dotnet restore && cd test/using-docker.tests && dotnet watch test

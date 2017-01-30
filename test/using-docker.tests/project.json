@@ -10,7 +10,8 @@
         },
         "System.Runtime.Serialization.Primitives": "4.1.1",
         "xunit": "2.1.0",
-        "dotnet-test-xunit": "2.2.0-preview2-build1029"
+      "dotnet-test-xunit": "2.2.0-preview2-build1029",
+      "using-docker.web": "1.0.0-*"
     },
     "tools": {
         "Microsoft.DotNet.Watcher.Tools": "1.1.0-preview4-final"
