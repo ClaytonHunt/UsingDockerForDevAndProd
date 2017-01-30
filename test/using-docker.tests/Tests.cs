@@ -15,10 +15,5 @@ namespace Tests
             // assert
             Assert.IsType<HomeController>(instance);
         }
-
-        [Fact]
-        public void ItCanTest() {
-            Assert.True(true);
-        }
     }
 }
