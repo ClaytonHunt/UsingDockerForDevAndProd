@@ -1,5 +1,6 @@
-version: '2'
-
+version: '3'
+volumes: 
+    data-volume:
 services:
     using-docker-test:
         image: dotnet-development

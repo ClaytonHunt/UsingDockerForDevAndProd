@@ -3,9 +3,27 @@ version: '3'
 services:
     using-docker-build:
         image: dotnet-development
+        depends_on: 
+            - using-docker-test-report
+        environment: 
+            - ASPNETCORE_ENVIRONMENT=Production
+        volumes:
+            - ./:/app
+            - /app/src/using-docker.web/wwwroot/lib
+            - /app/src/using-docker.web/node_modules
+            - /app/src/using-docker.web/bin            
+            - /app/src/using-docker.web/obj
+        tty: true
+        working_dir: /app        
+        entrypoint:
+            - /bin/sh
+            - -c
+        command:
+            - dotnet restore && cd src/using-docker.web && dotnet publish --configuration release --output /app/published
+    using-docker-test-report:
+        image: dotnet-development
         environment: 
             - ASPNETCORE_ENVIRONMENT=Development
-            - DOTNET_USE_POLLING_FILE_WATCHER=1
         volumes:
             - ./:/app
             - /app/src/using-docker.web/wwwroot/lib
@@ -20,4 +38,4 @@ services:
             - /bin/sh
             - -c
         command:
-            - dotnet restore && cd src/using-docker.web && dotnet publish --configuration release --output /app/published
+            - dotnet restore && cd test/using-docker.tests && dotnet test -xml /app/reports/testOutput.xml
