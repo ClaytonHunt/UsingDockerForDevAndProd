@@ -8,13 +8,14 @@ services:
             - DOTNET_USE_POLLING_FILE_WATCHER=1
         volumes:
             - ./src:/app
+            - ./test:/test
             - /app/using-docker.web/wwwroot/lib
             - /app/using-docker.web/bin            
             - /app/using-docker.web/obj
-            - /app/using-docker.tests/bin
-            - /app/using-docker.tests/obj
+            - /test/using-docker.tests/bin
+            - /test/using-docker.tests/obj
         tty: true
-        working_dir: /app/using-docker.tests
+        working_dir: /test/using-docker.tests
         entrypoint:
             - /bin/sh
             - -c
