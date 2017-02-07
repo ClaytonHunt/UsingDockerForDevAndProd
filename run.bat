@@ -1,4 +1,4 @@
-cd ./src/app.web
+cd ./src/using-docker.web
 
 docker build --tag dotnet-development .
 
