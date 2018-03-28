@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  application.web:
+    image: applicationweb
+    build:
+      context: .
+      dockerfile: application.web/Dockerfile
