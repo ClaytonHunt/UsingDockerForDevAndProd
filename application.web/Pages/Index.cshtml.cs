@@ -7,11 +7,11 @@ namespace application.web.Pages
         public int? AddValue {get; private set;}
         public void OnGet(int? a, int? b)
         {
-            if(a == null && b == null) {
-                AddValue = null;
-            } else {
-                AddValue = (a ?? 0) + (b ?? 0);
-            }
+            // if(a == null && b == null) {
+            //     AddValue = null;
+            // } else {
+            //     AddValue = (a ?? 0) + (b ?? 0);
+            // }
         }
     }
 }

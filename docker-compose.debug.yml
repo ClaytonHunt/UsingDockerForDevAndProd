@@ -16,24 +16,24 @@ services:
       - 3000:80
     # depends_on: 
     #  - application-test
-    entrypoint: dotnet watch run
+    entrypoint: dotnet watch run --no-restore
 
-  application-test:
-    build:
-      context: .
-      dockerfile: ./application.web/Dockerfile.dev
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - DOTNET_USE_POLLING_FILE_WATCHER=1
-    volumes:
-      - ./application.web:/src/application.web
-      - /src/application.web/bin
-      - /src/application.web/obj
-      - ./application.test:/src/application.test
-      - /src/application.test/bin
-      - /src/application.test/obj
-    ports:
-      - 3001:80
-    working_dir: /src/application.test
-    tty: true
-    entrypoint: dotnet watch test
+  # application-test:
+  #   build:
+  #     context: .
+  #     dockerfile: ./application.web/Dockerfile.dev
+  #   environment:
+  #     - ASPNETCORE_ENVIRONMENT=Development
+  #     - DOTNET_USE_POLLING_FILE_WATCHER=1
+  #   volumes:
+  #     - ./application.web:/src/application.web
+  #     - /src/application.web/bin
+  #     - /src/application.web/obj
+  #     - ./application.test:/src/application.test
+  #     - /src/application.test/bin
+  #     - /src/application.test/obj
+  #   ports:
+  #     - 3001:80
+  #   working_dir: /src/application.test
+  #   tty: true
+  #   entrypoint: dotnet watch test --no-restore
