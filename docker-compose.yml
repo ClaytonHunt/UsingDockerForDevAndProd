@@ -1,10 +1,10 @@
 version: '3'
 
 services:
-  docker-talk:
-    image: docker-talk
+  using-docker:
+    image: claytonhunt/using-docker
     build: 
       context: .
       dockerfile: ./application.web/Dockerfile
     ports:
-      - 3000:3000
+      - 3000:80
