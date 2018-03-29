@@ -14,8 +14,8 @@ services:
       - /src/application.web/obj
     ports:
       - 3000:80
-    depends_on: 
-      - application-test
+    # depends_on: 
+    #  - application-test
     entrypoint: dotnet watch run
 
   application-test:
@@ -29,7 +29,11 @@ services:
       - ./application.web:/src/application.web
       - /src/application.web/bin
       - /src/application.web/obj
+      - ./application.test:/src/application.test
+      - /src/application.test/bin
+      - /src/application.test/obj
     ports:
       - 3001:80
-   # working_dir: /src
-    entrypoint: dotnet watch run
+    working_dir: /src/application.test
+    tty: true
+    entrypoint: dotnet watch test

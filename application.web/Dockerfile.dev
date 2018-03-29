@@ -2,6 +2,7 @@ FROM microsoft/dotnet-nightly:2.1.300-preview2-sdk AS build
 WORKDIR /src
 COPY application.web.sln ./
 COPY application.web/application.web.csproj application.web/
+# COPY application.test/application.test.csproj application.test/
 RUN dotnet restore -nowarn:msb3202,nu1503
 COPY . .
 WORKDIR /src/application.web
