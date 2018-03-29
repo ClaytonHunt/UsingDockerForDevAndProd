@@ -1,20 +1,8 @@
-FROM microsoft/aspnetcore:2.0 AS base
+
+FROM microsoft/dotnet-nightly:2.1.300-preview2-sdk
+LABEL Name=claytonhunt/using-docker Version=2.0.0
+ARG source=.
 WORKDIR /app
-EXPOSE 80
-
-FROM microsoft/aspnetcore-build:2.0 AS build
-WORKDIR /src
-COPY application.web.sln ./
-COPY application.web/application.web.csproj application.web/
-RUN dotnet restore -nowarn:msb3202,nu1503
-COPY . .
-WORKDIR /src/application.web
-RUN dotnet build -c Release -o /app
-
-FROM build AS publish
-RUN dotnet publish -c Release -o /app
-
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "application.web.dll"]
+EXPOSE 3000
+COPY $source .
+ENTRYPOINT dotnet docker-talk.dll
