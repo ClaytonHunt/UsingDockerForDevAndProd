@@ -5,6 +5,7 @@ namespace application.web.Pages
     public class IndexModel : PageModel
     {
         public int? AddValue {get; private set;}
+        
         public void OnGet(int? a, int? b)
         {
             // if(a == null && b == null) {
